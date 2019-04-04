@@ -18,6 +18,12 @@ namespace Nop.Services.Plugins
         /// </summary>
         /// <returns>True if data are loaded, otherwise False</returns>
         bool LoadPluginInfo();
+
+        /// <summary>
+        /// Create copy from another instance of IPluginsInfo interface
+        /// </summary>
+        /// <param name="pluginsInfo">Plugins info</param>
+        void CopyFrom(IPluginsInfo pluginsInfo);
         
         /// <summary>
         /// Gets or sets the list of all installed plugin names

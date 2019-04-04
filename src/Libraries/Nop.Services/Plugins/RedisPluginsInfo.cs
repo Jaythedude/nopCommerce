@@ -46,10 +46,13 @@ namespace Nop.Services.Plugins
             //try to get plugin info from the JSON file
             var serializedItem = _db.StringGet(nameof(RedisPluginsInfo));
 
-            if (serializedItem.HasValue) 
-                return DeserializePluginInfo(serializedItem);
-
             var loaded = false;
+
+            if (serializedItem.HasValue) 
+                loaded = DeserializePluginInfo(serializedItem);
+
+            if (loaded)
+                return true;
 
             if (base.LoadPluginInfo())
             {

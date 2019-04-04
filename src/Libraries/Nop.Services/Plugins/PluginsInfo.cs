@@ -130,6 +130,21 @@ namespace Nop.Services.Plugins
             return !string.IsNullOrEmpty(text) && DeserializePluginInfo(text);
         }
 
+        /// <summary>
+        /// Create copy from another instance of IPluginsInfo interface
+        /// </summary>
+        /// <param name="pluginsInfo">Plugins info</param>
+        public virtual void CopyFrom(IPluginsInfo pluginsInfo)
+        {
+            InstalledPluginNames = pluginsInfo.InstalledPluginNames?.ToList();
+            PluginNamesToUninstall = pluginsInfo.PluginNamesToUninstall?.ToList();
+            PluginNamesToDelete = pluginsInfo.PluginNamesToDelete?.ToList();
+            PluginNamesToInstall = pluginsInfo.PluginNamesToInstall?.ToList();
+            AssemblyLoadedCollision = pluginsInfo.AssemblyLoadedCollision?.ToList();
+            PluginDescriptors = pluginsInfo.PluginDescriptors?.ToList();
+            IncompatiblePlugins = pluginsInfo.IncompatiblePlugins?.ToList();
+        }
+
         #endregion
 
         #region Properties
